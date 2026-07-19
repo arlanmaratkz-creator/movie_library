@@ -23,7 +23,7 @@ class MovieServices:
         session.add(movie)
         session.commit()
         return True
-    def delete_book(self,
+    def delete_movie(self,
                     title,
                     year,
                     director):
@@ -33,7 +33,7 @@ class MovieServices:
         session.delete(movie)
         session.commit()
         return True
-    def search_book(self,
+    def search_movie(self,
                     title,
                     year):
         movie = session.query(Movie).filter_by(title = title, year = year).first()
