@@ -12,6 +12,12 @@ class MovieServices:
         movie = session.query(Movie).filter_by(title = title, year = year , director = director).first()
         if movie:
             return False
+        if done.lower().strip() == "yes":
+            done = True
+        elif done.lower().strip() == "no":
+            done = False
+        else:
+            return False
         movie = Movie(title=title,
                      genre=genre,
                      director=director,
@@ -34,8 +40,9 @@ class MovieServices:
         return True
     def search_movie(self,
                     title,
-                    year):
-        movie = session.query(Movie).filter_by(title = title, year = year).first()
+                    year,
+                    director):
+        movie = session.query(Movie).filter_by(title = title, year = year,director = director).first()
         if not movie:
             return False
         return movie
@@ -63,12 +70,14 @@ class MovieServices:
         return True
     def search_movie_by_genre(self,
                               genre):
-        movie = session.query(Movie).filter_by(genre = genre).all()
+        return session.query(Movie).filter_by(genre=genre).all()
+    def set_as_done(self,
+                    title,
+                    year,
+                    director):
+        movie = session.query(Movie).filter_by(title = title, year = year,director = director).first()
         if not movie:
             return False
-        return movie
-    
-        
-    
-    
-           
+        movie.done = True
+        session.commit()
+        return True
