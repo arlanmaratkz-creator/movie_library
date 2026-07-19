@@ -1,6 +1,5 @@
 from database import session
 from models import Movie
-from sqlalchemy import func
 
 class MovieServices:
     def add_movie(self,
@@ -9,7 +8,7 @@ class MovieServices:
                   director,
                   year,
                   done,
-                  rate):
+                  rating):
         movie = session.query(Movie).filter_by(title = title, year = year , director = director).first()
         if movie:
             return False
@@ -18,7 +17,7 @@ class MovieServices:
                      director=director,
                      year=year,
                      done=done,
-                     rate=rate
+                     rating = rating
                      )
         session.add(movie)
         session.commit()
@@ -47,7 +46,7 @@ class MovieServices:
                      new_title,
                      new_year,
                      new_director,
-                     new_rate
+                     new_rating
                      ):
         movie = session.query(Movie).filter_by(title = title, year = year,director=director).first()
         if not movie:
@@ -58,8 +57,8 @@ class MovieServices:
             movie.director = new_director
         if new_year is not None:
             movie.year = new_year
-        if new_rate is not None:
-            movie.rating = new_rate
+        if new_rating is not None:
+            movie.rating = new_rating
         session.commit()
         return True
     def search_movie_by_genre(self,

@@ -10,6 +10,6 @@ class Movie(Base):
     director = Column(String)
     year = Column(Integer)
     done = Column(String)
-    rate = Column(String)
+    rating = Column(String)
 
     
