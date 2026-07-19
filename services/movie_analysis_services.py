@@ -15,14 +15,15 @@ class MovieAnalysis:
         worst_movie = session.query(Movie)\
             .order_by(Movie.rating)\
             .first()
+        return worst_movie
     def watched_count(self):
         watched = session.query(Movie)\
-            .filter_by(is_watched=True)\
+            .filter_by(done=True)\
             .count()
         return watched
     def unwatched_count(self):
         not_watched = session.query(Movie)\
-            .filter_by(is_watched=False)\
+            .filter_by(done=False)\
             .count()
         return not_watched
     def movie_count(self):
