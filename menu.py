@@ -63,7 +63,7 @@ def start_menu():
                 title= input("enter title : ")
                 director = input("enter director : ")
                 year = int(input("enter year : "))
-                result = movie_service.search_movie_movie(title = title,
+                result = movie_service.search_movie(title = title,
                                                     director = director,
                                                     year = year)
                 if result:
