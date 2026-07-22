@@ -71,7 +71,24 @@ def start_menu():
                 else:
                     print("something went wrong")
             elif choice == "4":
-                pass
+                title = input("enter current title : ")
+                year = int(input("enter current year : "))
+                director = input("enter current director :")
+                new_title = input("enter new title (leave empty if nessecary) : ")
+                new_year = int(input("enter new year (leave empty if nessecary) : "))
+                new_director = input("enter new director (leave empty if nessecary) : ")
+                new_rating = input("enter new rating (leave empty if nessecary) : ")
+                result = movie_service.update_movie(title = title,
+                                                    year = year,
+                                                    director = director,
+                                                    new_director=new_director,
+                                                    new_title=new_title,
+                                                    new_rating=new_rating,
+                                                    new_year=new_year)
+                if result:
+                    print("movie has been updated succesfully ! ")
+                else:
+                    print("something went wrong")
             elif choice == "5":
                 pass
             elif choice == "6":
