@@ -11,5 +11,6 @@ class Movie(Base):
     year = Column(Integer)
     done = Column(String)
     rating = Column(String)
+    
 
     
