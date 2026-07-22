@@ -44,12 +44,21 @@ def start_menu():
                     rating = rating,
                 )
                 if result:
-                    print("movie has been added succesfully")
+                    print("movie has been added succesfully ! ")
                 else:
                     print("something went wrong")
                 
             elif choice == "2":
-                pass
+                title= input("enter title : ")
+                director = input("enter director : ")
+                year = int(input("enter year : "))
+                result = movie_service.delete_movie(title = title,
+                                                    director = director,
+                                                    year = year)
+                if result:
+                    print("movie has been delete succesfully ! ")
+                else:
+                    print("something went wrong")
             elif choice == "3":
                 pass
             elif choice == "4":
